@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create users</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{'/css/main.css'}"/>
+    <link layout:fragment="pageStyleLink"/>
+    <style layout:fragment="pageStyle"></style>
+</head>
+<body>
+<div align="center">
+    <h2>Create users</h2>
+    <form:form action="save" method="post">
+        <table border="0" cellpadding="5">
+
+                <label th:for="name">Name of person: </label>
+                <input th:name="name" type="text" id="name"/>
+
+                <label th:for="email">Email: </label>
+                <input th:name="email" type="text" id="email"/>
+
+                <label th:for="address">Address: </label>
+                <input th:name="address" type="text" id="address"/>
+            <tr>
+                <td> <button type="button" class="btn btn-success"><i class="fa fa-arrow-circle-o-left"></i>Success</button></td>
+            </tr>
+        </table>
+    </form:form>
+</div>
+
+
+
+
+</body>
+</html>
