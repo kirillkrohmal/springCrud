@@ -21,7 +21,6 @@
         <table class="table">
             <thead class="thead-light">
             <tr>
-                <th>ID</th>
                 <th>Name of person</th>
                 <th>Email</th>
                 <th>Address</th>
@@ -31,12 +30,11 @@
             <tbody>
             <th:block th:each="person : ${newPerson}" th:remove="tag">
                 <tr>
-                    <td th:text="${user.id}"></td>
-                    <td th:text="${user.name}"></td>
-                    <td th:text="${user.email}"></td>
-                    <td th:text="${user.address}"></td>
+                    <td th:text="${person.name}"></td>
+                    <td th:text="${person.email}"></td>
+                    <td th:text="${person.address}"></td>
 
-                    <td><form th:action="@{/user/{id}/edit(id=${person.getId()})}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Edit</a> </form></td>
+                    <td><form th:action="@{/person/{id}/edit(id=${person.getId()})}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Edit</a> </form></td>
                     <td><form th:method="DELETE" th:action="@{/person/{id}(id=${person.getId()})}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Delete</a></form></td>
                 </tr>
             </th:block>
