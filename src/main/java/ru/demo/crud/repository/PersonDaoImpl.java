@@ -12,29 +12,31 @@ import java.util.List;
 public class PersonDaoImpl implements PersonDAO {
     private static Connection connection;
 
-    @Override
     public List<Person> index() {
         List<Person> personList = new ArrayList<>();
-
-        try {
-            Statement statement = connection.createStatement();
-            String SQL = "SELECT * FROM Person";
-            ResultSet resultSet = statement.executeQuery(SQL);
-
+        String SQL = "SELECT * FROM Person";
+        try (Statement statement = connection.createStatement(); ResultSet resultSet = statement.executeQuery(SQL)) {
+            connection.setAutoCommit(false);
+            connection.commit();
+            connection.setAutoCommit(true);
             while (resultSet.next()) {
-                Person person = new Person();
 
+                Person person = new Person ();
                 person.setId(resultSet.getInt("id"));
                 person.setName(resultSet.getString("name"));
                 person.setEmail(resultSet.getString("address"));
                 person.setAddress(resultSet.getString("email"));
-
                 personList.add(person);
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            try {
+                connection.rollback();
+                connection.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            e.getStackTrace();
         }
-
         return personList;
     }
 

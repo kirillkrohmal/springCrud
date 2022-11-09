@@ -14,13 +14,20 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
+    @GetMapping(value = "/list")
+    public String index(Model model) {
+        model.addAttribute("person", personService.index());
+        return "/form";
+    }
+
+
     @GetMapping(value = "/list/{id}")
     public String show(@PathVariable(value = "id") int id, Model model) {
         model.addAttribute("person", personService.show(id));
         return "/form";
     }
 
-    @PostMapping(value = "/new")
+    @GetMapping(value = "/new")
     public String addPersonForm(@ModelAttribute("person")Person person, BindingResult bindingResult,
                               Model model) {
 
@@ -40,7 +47,7 @@ public class PersonController {
         return "/edit";
     }
 
-    @PutMapping(value = "{id}/edit")
+    @PutMapping(value = "/edit/{id}")
     public String update(@PathVariable("id") int id, @ModelAttribute("person")Person person) {
         personService.update(id, person);
 
@@ -50,6 +57,7 @@ public class PersonController {
     @DeleteMapping(value = "list/{id}")
     public String delete(@PathVariable("id") int id) {
         personService.delete(id);
+
         return "redirect:/list";
     }
 }
