@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public class PersonDaoImpl implements PersonDAO {
-
     private static Connection connection;
 
     @Override
@@ -107,7 +106,5 @@ public class PersonDaoImpl implements PersonDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-
     }
 }

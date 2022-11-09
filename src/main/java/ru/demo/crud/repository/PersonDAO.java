@@ -5,7 +5,6 @@ import ru.demo.crud.model.Person;
 import java.util.List;
 
 public interface PersonDAO {
-
     List<Person> index();
 
     Person show(int id);

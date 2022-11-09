@@ -28,11 +28,11 @@
             </tr>
             </thead>
             <tbody>
-            <th:block th:each="person : ${newPerson}" th:remove="tag">
+            <th:block th:each="personNew : ${person}" th:remove="tag">
                 <tr>
-                    <td th:text="${person.name}"></td>
-                    <td th:text="${person.email}"></td>
-                    <td th:text="${person.address}"></td>
+                    <td th:text="${personNew.name}"></td>
+                    <td th:text="${personNew.email}"></td>
+                    <td th:text="${personNew.address}"></td>
 
                     <td><form th:action="@{/person/{id}/edit(id=${person.getId()})}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Edit</a> </form></td>
                     <td><form th:method="DELETE" th:action="@{/person/{id}(id=${person.getId()})}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Delete</a></form></td>
