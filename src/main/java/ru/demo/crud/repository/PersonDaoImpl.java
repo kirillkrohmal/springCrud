@@ -13,10 +13,6 @@ public class PersonDaoImpl implements PersonDAO {
 
     private static Connection connection;
 
-    private String URL = "jdbc:postgresql://localhost:5432/postgres";
-    private String login = "postgres";
-    private String password = "root";
-
     @Override
     public List<Person> index() {
         List<Person> personList = new ArrayList<>();
@@ -36,11 +32,9 @@ public class PersonDaoImpl implements PersonDAO {
 
                 personList.add(person);
             }
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
 
         return personList;
     }

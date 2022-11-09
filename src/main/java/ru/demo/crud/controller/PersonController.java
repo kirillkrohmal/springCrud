@@ -14,8 +14,8 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
-    @GetMapping(value = "/list")
-    public String show(@PathVariable("id") int id, Model model) {
+    @GetMapping(value = "/list/{id}")
+    public String show(@PathVariable(value = "id") int id, Model model) {
         model.addAttribute("person", personService.show(id));
         return "/form";
     }
@@ -33,8 +33,8 @@ public class PersonController {
         return "redirect:/list";
     }
 
-    @PutMapping(value = "{id}/edit")
-    public String edit(@PathVariable("id") int id, Model model) {
+    @GetMapping()
+    public String edit(@RequestParam(value = "id") int id, Model model) {
         model.addAttribute("person", personService.show(id));
 
         return "/edit";
