@@ -7,6 +7,7 @@ import ru.demo.crud.model.Person;
 import ru.demo.crud.repository.PersonDAO;
 
 import javax.servlet.annotation.ServletSecurity;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service

@@ -20,10 +20,9 @@ public class PersonController {
         return "/form";
     }
 
-
     @GetMapping(value = "/list/{id}")
     public String show(@PathVariable(value = "id") int id, Model model) {
-        model.addAttribute("person", personService.show(id));
+        personService.show(id);
         return "/form";
     }
 
@@ -35,12 +34,17 @@ public class PersonController {
             model.addAttribute("person", personService.index());
         }
 
-        personService.save(person);
-
-        return "redirect:/list";
+        return "/add";
     }
 
-    @GetMapping()
+    @PostMapping
+    public String create(@ModelAttribute("person")Person person) {
+       personService.save(person);
+
+       return "redirect:/list";
+    }
+
+    @GetMapping(value = "/update")
     public String edit(@RequestParam(value = "id") int id, Model model) {
         model.addAttribute("person", personService.show(id));
 
