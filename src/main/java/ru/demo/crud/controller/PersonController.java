@@ -44,21 +44,21 @@ public class PersonController {
        return "redirect:/list";
     }
 
-    @GetMapping(value = "/update")
+    @GetMapping(value = "/{id}/edit")
     public String edit(@RequestParam(value = "id") int id, Model model) {
         model.addAttribute("person", personService.show(id));
 
         return "/edit";
     }
 
-    @PutMapping(value = "/edit/{id}")
-    public String update(@PathVariable("id") int id, @ModelAttribute("person")Person person) {
+    @PutMapping(value = "/{id}")
+    public String update(@PathVariable("id") int id, @ModelAttribute("person") Person person) {
         personService.update(id, person);
 
         return "redirect:/list";
     }
 
-    @DeleteMapping(value = "list/{id}")
+    @DeleteMapping(value = "/{id}")
     public String delete(@PathVariable("id") int id) {
         personService.delete(id);
 
