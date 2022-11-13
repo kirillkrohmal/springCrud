@@ -34,8 +34,10 @@
                     <td th:text="${personNew.email}"></td>
                     <td th:text="${personNew.address}"></td>
 
-                    <td><form th:action="@{/person/{id}/edit(id=${person.getId()})}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Edit</a> </form></td>
-                    <td><form th:method="DELETE" th:action="@{/person/{id}(id=${person.getId()})}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Delete</a></form></td>
+                    <td>
+                        <form th:action="@{/person/{id}/edit(id=${person.getId()})}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Edit</a> </form>
+                        <form th:method="DELETE" th:action="@{/person/{id}(id=${person.getId()})}" class="btn btn-success"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Delete</a></form>
+                    </td>
                 </tr>
             </th:block>
 
