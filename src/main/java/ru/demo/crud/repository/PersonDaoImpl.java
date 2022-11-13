@@ -42,7 +42,6 @@ public class PersonDaoImpl implements PersonDAO {
 
     @Override
     public Person show(int id) {
-
         Person person = null;
 
         try {
